@@ -21,12 +21,12 @@ if ($OS == "Darwin") {
 echo "Operating System: " . $OS_NAME . " " . $OS_VER . "<br/>";
 
 if (command_exist("apache2")) {
-    $WEBPROG = exec("apache2 -V | grep ^Server\ version")
+    $WEBPROG = exec("apache2 -V | grep ^Server\ version");
 } elseif (command_exist("httpd")) {
-    $WEBPROG = exec("httpd -V | grep ^Server\ version")
+    $WEBPROG = exec("httpd -V | grep ^Server\ version");
 }
 
-echo $WEBPROG;
+echo $WEBPROG . "<br/>;
 
 echo "Web Server: " . $_SERVER['SERVER_SIGNATURE'] . "<br/>";
 echo "PHP Version: " . phpversion() . "<br/>";
