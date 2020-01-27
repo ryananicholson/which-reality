@@ -32,5 +32,9 @@ echo $WEBPROG . "<br/>";
 
 echo "Web Server: " . $_SERVER['SERVER_SIGNATURE'] . "<br/>";
 echo "PHP Version: " . phpversion() . "<br/>";
-echo phpinfo();
+
+exec("ps -ef", $output);
+foreach ($output as $i) {
+  echo $i . "<br/>";
+}
 ?>
