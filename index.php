@@ -19,6 +19,6 @@ if ($OS == "Darwin") {
 }
 
 echo "Operating System: " . $OS_NAME . " " . $OS_VER . "<br/>";
-echo "Web Server: " . $_SERVER['SERVER_SOFTWARE'] . "<br/>";
+echo "Web Server: " . $_SERVER['SERVER_SIGNATURE'] . "<br/>";
 echo "PHP Version: " . phpversion() . "<br/>";
 ?>
