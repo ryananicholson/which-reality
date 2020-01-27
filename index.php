@@ -26,7 +26,7 @@ if (command_exist("apache2")) {
     $WEBPROG = exec("httpd -V | grep ^Server\ version");
 }
 
-echo $WEBPROG . "<br/>;
+echo $WEBPROG . "<br/>";
 
 echo "Web Server: " . $_SERVER['SERVER_SIGNATURE'] . "<br/>";
 echo "PHP Version: " . phpversion() . "<br/>";
