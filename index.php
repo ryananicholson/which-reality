@@ -24,6 +24,8 @@ if (command_exist("apache2")) {
     $WEBPROG = exec("apache2 -V | grep ^Server\ version");
 } elseif (command_exist("httpd")) {
     $WEBPROG = exec("httpd -V | grep ^Server\ version");
+} elseif (command_exist("nginx")) {
+    $WEBPROG = exec("nginx -V | grep ^nginx\ version");
 }
 
 echo $WEBPROG . "<br/>";
