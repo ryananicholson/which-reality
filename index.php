@@ -22,15 +22,25 @@ echo "Operating System: " . $OS_NAME . " " . $OS_VER . "<br/>";
 
 if (command_exist("apache2")) {
     $WEBPROG = exec("apache2 -V | grep ^Server\ version");
+    if is_null($WEBPROG) {
+        echo "Web Server: Apache (Undetermined version)<br/>";
+    }
 } elseif (command_exist("httpd")) {
     $WEBPROG = exec("httpd -V | grep ^Server\ version");
+    if is_null($WEBPROG) {
+        echo "Web Server: Apache (Undetermined version)<br/>";
+    }
 } elseif (command_exist("nginx")) {
     $WEBPROG = exec("nginx -V | grep ^nginx\ version");
+    if is_null($WEBPROG) {
+        echo "Web Server: NGINX (Undetermined version)<br/>";
+    }
 }
 
-echo $WEBPROG . "<br/>";
+if !is_null($WEBPROG) {
+    echo $WEBPROG . "<br/>";
+}
 
-echo "Web Server: " . $_SERVER['SERVER_SIGNATURE'] . "<br/>";
 echo "PHP Version: " . phpversion() . "<br/>";
 
 exec("ps -ef", $output);
