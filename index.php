@@ -1,3 +1,10 @@
+<html>
+<head>
+  <title>Oh geez... What reality am I in?</title>
+</head>
+
+<body>
+<h1> Server Information</h1>
 <?php 
 
 function command_exist($cmd) {
@@ -41,3 +48,13 @@ echo $WEBPROG . "<br/>";
 
 echo "PHP Version: " . phpversion() . "<br/>";
 ?>
+
+<h1> Running Processes </h1>
+<?php
+exec("ps -ef", $output);
+foreach($output as $i) {
+    echo $i . "<br/>";
+}
+?>
+</body>
+</html>
