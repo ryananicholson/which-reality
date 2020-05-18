@@ -23,6 +23,9 @@ if ($OS == "Darwin") {
 } elseif (command_exist("rpm")) {
     $OS_NAME = exec("rpm --query redhat-release-server");
     $OS_VER = "";
+} elseif (command_exist("uname")) {
+    $OS_NAME = exec("uname -r");
+    $OS_VER = "";
 }
 
 echo "Operating System: " . $OS_NAME . " " . $OS_VER . "<br/>";
