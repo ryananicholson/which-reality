@@ -12,23 +12,12 @@ function command_exist($cmd) {
     return !empty($return);
 }
 
-$OS = PHP_OS;
-
-if ($OS == "Darwin") {
-    $OS_NAME = "macOS";
-    $OS_VER = exec("sw_vers -productVersion");
-} elseif (command_exist("lsb_release")) {
-    $OS_NAME = exec("lsb_release -a 2>/dev/null | grep Distributor | awk '{print $3}'");
-    $OS_VER = exec("lsb_release -a 2>/dev/null | grep Release | awk '{print $2}'");
-} elseif (command_exist("rpm")) {
-    $OS_NAME = exec("rpm --query redhat-release-server");
-    $OS_VER = "";
-} elseif (command_exist("uname")) {
+if (command_exist("uname")) {
     $OS_NAME = exec("uname -r");
     $OS_VER = "";
 }
 
-echo "Operating System: " . $OS_NAME . " " . $OS_VER . "<br/>";
+echo "Kernel version: " . $OS_NAME . " " . $OS_VER . "<br/>";
 
 if (command_exist("apache2")) {
     $WEBPROG = exec("apache2 -V | grep ^Server\ version");
