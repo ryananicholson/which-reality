@@ -28,3 +28,4 @@ jobs:
       with:
         # Target URL
         target: "https://test.local"
+        token: ${{ secrets.ISSUES_TOKEN }}
