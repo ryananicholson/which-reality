@@ -21,6 +21,7 @@ elif [[ $1 == "teardown" ]]; then
   az webapp delete --name ${YOUR_USER_ID}-app --resource-group ${YOUR_USER_ID}-rg >/dev/null
   az appservice plan delete --name ${YOUR_USER_ID}-Plan --resource-group ${YOUR_USER_ID}-rg -y >/dev/null
   az group delete --name ${YOUR_USER_ID}-rg -y >/dev/null
+  git remote remove azure
 else
   echo -e "\033[31m[-] You must choose deploy or teardown:\n    $ ./which-reality.sh deploy\n    $ ./which-reality.sh teardown\033[0m"
 fi
