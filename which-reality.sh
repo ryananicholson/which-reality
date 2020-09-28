@@ -2,7 +2,7 @@
 
 if [[ $1 == "deploy" ]]; then
   read -p "Enter your User ID: " YOUR_USER_ID
-  read -p "Enter a deployment password: " DEPLOY_PASS
+  read -sp "Enter a deployment password: " DEPLOY_PASS
   echo -e "\033[32mCreating the ${YOUR_USER_ID} deployment user...\033[0m"
   az webapp deployment user set --user-name ${YOUR_USER_ID} --password ${DEPLOY_PASS} >/dev/null
   echo -e "\033[32mCreating the ${YOUR_USER_ID}-rg resource group...\033[0m"
@@ -17,7 +17,7 @@ if [[ $1 == "deploy" ]]; then
   echo -e "\033[32mComplete! Navigate to https://${YOUR_USER_ID}-app.azurewebsites.net\033[0m"
 
 elif [[ $1 == "teardown" ]]; then
-  read -p "Enter your User ID: " YOUR_USER_ID
+  YOUR_USER_ID=$(az webapp deployment user show | jq -r .publishingUserName)
   az webapp delete --name ${YOUR_USER_ID}-app --resource-group ${YOUR_USER_ID}-rg >/dev/null
   az appservice plan delete --name ${YOUR_USER_ID}-Plan --resource-group ${YOUR_USER_ID}-rg -y >/dev/null
   az group delete --name ${YOUR_USER_ID}-rg -y >/dev/null
