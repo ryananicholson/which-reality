@@ -4,7 +4,8 @@ if [[ $1 == "deploy" ]]; then
   read -p "Enter your User ID: " YOUR_USER_ID
   read -sp "Enter a deployment password: " DEPLOY_PASS
   echo -e "\n\033[32mCreating the ${YOUR_USER_ID} deployment user...\033[0m"
-  az webapp deployment user set --user-name ${YOUR_USER_ID} --password ${DEPLOY_PASS} >/dev/null
+  az webapp deployment user set --user-name ${YOUR_USER_ID} --password ${DEPLOY_PASS} 1>/dev/null
+  if [ $? -ne 0 ]; then exit 1; fi
   echo -e "\033[32mCreating the ${YOUR_USER_ID}-rg resource group...\033[0m"
   az group create --name ${YOUR_USER_ID}-rg --location "Central US" >/dev/null
   echo -e "\033[32mCreating the ${YOUR_USER_ID}-plan App service plan...\033[0m"
