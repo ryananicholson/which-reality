@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [[ $1 == "deploy" ]]; then
-  echo -e "\n\033[32m[+] Creating the ${YOUR_USER_ID} deployment user...\033[0m"
+  echo -e "\033[32m[+] Creating the ${YOUR_USER_ID} deployment user...\033[0m"
   read -p "    Enter your User ID: " YOUR_USER_ID
   read -sp "    Enter a deployment password: " DEPLOY_PASS
-  echo -e "    Issuing command: \033[33maz webapp deployment user set --user-name ${YOUR_USER_ID} --password ***REDACTED***\033[0m"
+  echo -e "\n    Issuing command: \033[33maz webapp deployment user set --user-name ${YOUR_USER_ID} --password ***REDACTED***\033[0m"
   az webapp deployment user set --user-name ${YOUR_USER_ID} --password "${DEPLOY_PASS}" 1>/dev/null
   if [ $? -ne 0 ]; then 
     echo -e "\033[31m[!] ERROR CREATING USER! Exiting...\033[0m"
