@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [[ $1 == "deploy" ]]; then
-  read -p "Enter your User ID: " YOUR_USER_ID
-  read -sp "Enter a deployment password: " DEPLOY_PASS
   echo -e "\n\033[32m[+] Creating the ${YOUR_USER_ID} deployment user...\033[0m"
+  read -p "    Enter your User ID: " YOUR_USER_ID
+  read -sp "    Enter a deployment password: " DEPLOY_PASS
   echo -e "    Issuing command: \033[33maz webapp deployment user set --user-name ${YOUR_USER_ID} --password ***REDACTED***\033[0m"
   az webapp deployment user set --user-name ${YOUR_USER_ID} --password "${DEPLOY_PASS}" 1>/dev/null
   if [ $? -ne 0 ]; then 
@@ -41,11 +41,25 @@ if [[ $1 == "deploy" ]]; then
     fi
   fi
   echo -e "    Issuing command: \033[33mgit push azure master\033[0m"
+  echo -n "    "
   git push azure master >/dev/null 2>/dev/null
   if [ $? -ne 0 ]; then
     echo -e "\033[31m[!] ERROR PUSHING CODE! Exiting...\033[0m"
     exit 1
   fi
+  echo -e "\033[32m[+] Waiting for web app to respond properly (waiting up to two minutes)...\033[0m"
+  COUNT=0
+  until curl -s https://${YOUR_USER_ID}-app.azurewebsites.net | grep "Oh geez" >/dev/null 2>/dev/null; do
+    sleep 5
+    COUNT=$(($COUNT + 1))
+    if [ $COUNT -ge 12 ]; then
+      echo -e "\033[31m[!] ERROR! TIMED OUT WAITING FOR WEB APP! Exiting..."
+      echo -e "    This does not indicate a failure on your part... just that Azure is being slow at the moment."
+      echo -e "    You can either teardown and try again, or wait a little longer and navigate to:"
+      echo -e "    \033[0mhttps://${YOUR_USER_ID}-app.azurewebsites.net"
+      exit 1
+    fi
+  done
   echo -e "\033[32m[+] Complete! Navigate to https://${YOUR_USER_ID}-app.azurewebsites.net\033[0m"
 
 elif [[ $1 == "teardown" ]]; then
