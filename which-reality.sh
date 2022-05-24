@@ -64,7 +64,7 @@ if [[ $1 == "deploy" ]]; then
 
 elif [[ $1 == "teardown" ]]; then
   echo -e "\033[32m[+] Retrieving your deployment user name...\033[0m"
-  echo -e "    Issuing command: \033[33maz webapp deployment user show | jq -r .publishingUserName)\033[0m"
+  echo -e "    Issuing command: \033[33maz webapp deployment user show | jq -r .publishingUserName\033[0m"
   YOUR_USER_ID=$(az webapp deployment user show | jq -r .publishingUserName)
   if [ $? -ne 0 ]; then
     echo -e "\033[31m[!] ERROR RETRIEVING DEPLOYMENT USER NAME! Exiting...\033[0m"
