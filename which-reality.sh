@@ -26,7 +26,7 @@ if [[ $1 == "deploy" ]]; then
   fi
   echo -e "\033[32m[+] Creating the ${YOUR_USER_ID}-app Web App...\033[0m"
   echo -e "    Issuing command: \033[33maz webapp create --resource-group ${YOUR_USER_ID}-rg --plan ${YOUR_USER_ID}-plan --name ${YOUR_USER_ID}-app --runtime \"PHP|7.4\" --deployment-local-git\033[0m"
-  az webapp create --resource-group ${YOUR_USER_ID}-rg --plan ${YOUR_USER_ID}-plan --name ${YOUR_USER_ID}-app --runtime "PHP|7.4" --deployment-local-git >/dev/null 2>/dev/null
+  az webapp create --resource-group ${YOUR_USER_ID}-rg --plan ${YOUR_USER_ID}-plan --name ${YOUR_USER_ID}-app --runtime "PHP|8.0" --deployment-local-git >/dev/null 2>/dev/null
   if [ $? -ne 0 ]; then
     echo -e "\033[31m[!] ERROR CREATING WEB APP! Exiting...\033[0m"
     exit 1
