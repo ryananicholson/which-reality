@@ -1,0 +1,32 @@
+body {
+    background: linear-gradient(#ff9900, #ffe0b3);
+    font-family: Verdana;
+    font-size: 16px;
+}
+
+h1 {
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 25px;
+}
+
+h2 {
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 22px;
+}
+
+p {
+    color: black;
+    text-align: left;
+}
+
+code {
+    color: greenyellow;
+    margin: 5px 5px 5px 5px;
+    display: inline-block;
+}
+
+#terminal {
+    background-color: black;
+}

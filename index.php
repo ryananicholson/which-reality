@@ -1,11 +1,13 @@
 <html>
 <head>
+  <link rel="stylesheet" href="style.css">
   <title>Oh geez... What reality am I in?</title>
 </head>
 
-<!-- TODO: Remember to upgrade Azure subscription before trial ends. Company credit card is 1234-5678-1234-5678. -->
+<!-- TODO: Remember to upgrade Azure subscription before trial ends. Company credit card is 4123-4567-8910-1112. -->
   
 <body>
+<img src="Cloud_Ace_Final.png" width="250px" style="display:block;margin-left:auto;margin-right:auto;" />
 <h1> Server Information</h1>
 <?php 
 
@@ -44,11 +46,14 @@ echo "PHP Version: " . phpversion() . "<br/>";
 ?>
 
 <h1> Running Processes </h1>
+
+<div id=terminal>
 <?php
 exec("ps -ef", $output);
 foreach($output as $i) {
-    echo $i . "<br/>";
+    echo "<code>" . $i . "</code><br/>";
 }
 ?>
+</div>
 </body>
 </html>
