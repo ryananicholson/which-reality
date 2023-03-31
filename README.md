@@ -13,12 +13,32 @@ cd which-reality
 az webapp up --runtime PHP:8.1 --sku B1 --logs
 ```
 
-## Deploying in GCP
+# GCP
 
-From GCP CloudShell
+## Deploying
 
-```bash
-git clone https://github.com/ryananicholson/which-reality --branch i01
-cd which-reality
-gcloud app deploy
-```
+1. From GCP CloudShell, connect your GCP account and follow the prompts to login:
+
+    ```bash
+    gcloud account login
+    ```
+
+2. Now, run the following commands:
+
+    ```bash
+    git clone https://github.com/ryananicholson/which-reality --branch i01
+    cd which-reality
+    gcloud app deploy
+    ```
+
+3. If prompted to **Authorize Cloud Shell**, click **AUTHORIZE**.
+
+4. When prompted to continue, type `Y` and `Enter`.
+
+## Tearing Down
+
+1. From GCP CloudShell, run the following command:
+
+    ```bash
+    
+    ```
