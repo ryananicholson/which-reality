@@ -1,1 +1,7 @@
 runtime: php81
+
+handlers:
+- url: /style.css
+  static_files: style.css
+- url: /Cloud_Ace_Final.png
+  static_files: Cloud_Ace_Final.png
