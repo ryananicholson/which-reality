@@ -34,7 +34,7 @@ if (command_exist("apache2")) {
         $WEBPROG = "Web Server: Apache (Undetermined version)";
     }
 } elseif (command_exist("nginx")) {
-    $WEBPROG = exec("nginx -V | grep ^nginx\ version");
+    $WEBPROG = exec("nginx -V  2>&1 | grep ^nginx\ version | sed 's/^nginx/Server/'");
     if ($WEBPROG == "") {
         $WEBPROG = "Web Server: NGINX (Undetermined version)";
     }
