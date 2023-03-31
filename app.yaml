@@ -3,5 +3,7 @@ runtime: php81
 handlers:
 - url: /style.css
   static_files: style.css
+  upload: style.css
 - url: /Cloud_Ace_Final.png
   static_files: Cloud_Ace_Final.png
+  upload: Cloud_Ace_Final.png
