@@ -11,8 +11,8 @@ if [[ $1 == "deploy" ]]; then
     exit 1
   fi
   echo -e "\033[32m[+] Creating the ${YOUR_USER_ID}-rg resource group...\033[0m"
-  echo -e "    Issuing command: \033[33maz group create --name ${YOUR_USER_ID}-rg --location \"East US\"\033[0m"
-  az group create --name ${YOUR_USER_ID}-rg --location "East US" >/dev/null
+  echo -e "    Issuing command: \033[33maz group create --name ${YOUR_USER_ID}-rg --location \"West Europe\"\033[0m"
+  az group create --name ${YOUR_USER_ID}-rg --location "West Europe" >/dev/null
   if [ $? -ne 0 ]; then
     echo -e "\033[31m[!] ERROR CREATING RESOURCE GROUP! Exiting...\033[0m"
     exit 1
