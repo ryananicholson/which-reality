@@ -1,0 +1,17 @@
+fastapi==0.115.0
+pandas>=2.0.0
+numpy>=1.24.0
+uvicorn[standard]==0.30.6
+sqlalchemy==2.0.35
+pydantic-settings==2.5.2
+apscheduler==3.10.4
+pytz==2024.2
+anthropic>=0.40.0
+yfinance>=0.2.51
+finnhub-python==2.4.28
+feedparser==6.0.11
+requests==2.32.3
+beautifulsoup4==4.12.3
+python-dotenv==1.0.1
+psycopg2-binary==2.9.9
+massive==2.7.0

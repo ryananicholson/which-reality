@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: tradeiq
+    runtime: python
+    region: ohio
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt && cd frontend && npm install && npm run build
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false          # enter in Render dashboard — required for AI analysis
+      - key: POLYGON_API_KEY
+        sync: false          # enter in Render dashboard — required for options data (Massive/Polygon)
+      - key: FINNHUB_API_KEY
+        sync: false          # enter in Render dashboard — free key from finnhub.io
+      - key: DATABASE_URL
+        sync: false          # IMPORTANT: set this to your Neon/Render PostgreSQL URL
+                             # Format: postgresql://user:password@host/dbname
+                             # Get a free database at https://neon.tech
+                             # Without this, data is stored in /tmp and WILL BE LOST on redeploy
+      - key: DB_PATH
+        value: /tmp/trading.db   # only used if DATABASE_URL is not set (local dev fallback)
+      - key: PYTHON_VERSION
+        value: 3.11.0
